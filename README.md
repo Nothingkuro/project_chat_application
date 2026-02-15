@@ -27,8 +27,9 @@ This project uses Jest + Supertest in the server package.
 
 1) Create a Supabase project.
 2) Create a table named `healthcheck` with an `id` column.
-3) Ensure the service role key is used, or allow reads for the table.
-4) Add your credentials to `.env` (root of the repo).
+3) Create a table named `messages` with columns `id`, `room`, `user`, `text`, `created_at`.
+4) Ensure the service role key is used, or allow reads for the tables.
+5) Add your credentials to `.env` (root of the repo).
 
 ### Install test dependencies
 
@@ -46,3 +47,8 @@ npm test
 ### Endpoints covered
 
 - GET /api/health (happy + sad path)
+- GET /api/rooms/:room/messages (happy + sad path)
+
+Note: insert at least one `messages` row with `room = lobby` so the happy-path test passes.
+
+
