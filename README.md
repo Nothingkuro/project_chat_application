@@ -18,3 +18,31 @@ By the end of this video, you will have a strong understanding of how to send an
 
 Setup:
 - run ```npm i && npm start``` for both client and server side to start the development server
+
+## API testing (SE 2240 Lab 2)
+
+This project uses Jest + Supertest in the server package.
+
+### Supabase setup
+
+1) Create a Supabase project.
+2) Create a table named `healthcheck` with an `id` column.
+3) Ensure the service role key is used, or allow reads for the table.
+4) Add your credentials to `.env` (root of the repo).
+
+### Install test dependencies
+
+```
+cd server
+npm install
+```
+
+### Run tests
+
+```
+npm test
+```
+
+### Endpoints covered
+
+- GET /api/health (happy + sad path)
