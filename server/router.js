@@ -66,27 +66,27 @@ router.get("/api/rooms/:room/messages", async (req, res) => {
 });
 
 
-router.get('/api/users', (req, res) => {
+router.get('/api/users', async (req, res) => {
   const roomName = (req.query.room || '').trim().toLowerCase();
 
   if (!roomName) {
     return res.status(400).json({ error: 'Room is required.' });
   }
 
-  const users = getUsersInRoom(roomName);
+  const users = await getUsersInRoom(roomName);
 
   return res.status(200).json({ room: roomName, users });
 });
 
 
-router.post('/api/users', (req, res) => {
+router.post('/api/users', async (req, res) => {
   const { id, name, room } = req.body || {};
 
   if (!id || !name || !room) {
     return res.status(400).json({ error: 'id, name and room are required.' });
   }
 
-  const result = addUser({ id, name, room });
+  const result = await addUser({ id, name, room });
 
   if (result.error) {
     return res.status(400).json({ error: result.error });
